@@ -23,7 +23,7 @@
             console.log(test, kg);
 
             if (test) {
-                BMI = Math.round((kg / (height * height) * 10) / 10);
+                BMI = (Math.round(kg / (height * height) * 10) / 10);
                 document.getElementById('bmiRez').value = BMI;
             }else {
                 alert('Vrednost koju unosite mora biti broj.');
