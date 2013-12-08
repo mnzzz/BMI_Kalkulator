@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>BMI Kalkulator</title>
+    <link rel="shortcut icon" href="slike/bg.jpg" type="image/jpeg"/>
+    <meta http-equiv="Content-Language" content="sr"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans&subset=latin,latin-ext' rel='stylesheet'
+          type='text/css'>
+
+    <script language="JavaScript">
+        function BMIKalkulator() {
+
+            var kg, height, BMI, test;
+
+                kg = document.getElementById('tezina').value;
+                height = document.getElementById('visina').value;
+
+            test = validateInput(kg);
+
+            console.log(test, kg);
+
+            if (test) {
+                BMI = Math.round((kg / (height * height) * 10) / 10);
+                document.getElementById('bmiRez').value = BMI;
+            }else {
+                alert('Vrednost koju unosite mora biti broj.');
+            }
+        }
+
+        function validateInput(num) {
+            var arr;
+
+            if(num === ""){
+                return false;
+            }
+
+            num = num.toString();
+
+            arr = num.split('');
+
+            for(var i = 0;i<arr.length;i++){
+                console.log(arr[i]);
+                if(parseInt(arr[i]) === NaN) {
+                    return false;
+                }
+            }
+
+            return  true;
+
+        }
+
+    </script>
+</head>
+<body>
+<div id="header">
+    <div id="naslov" style="font-family: 'Alegreya Sans', serif;"><h1>BMI Kalkulator</h1></div>
+    <div id="mera"><img src="slike/mera.jpg" height="150" width="250"></div>
+</div>
+
+<div id="container">
+    <br/>
+
+    <div id="opis" style="font-family: 'Alegreya Sans', serif;">
+        <p style=" ">Indeks telesne mase (engl. Body mass index, - BMI) je visinsko-težinski pokazatelj uhranjenosti
+            pojedinca i <b>validan je za sve osobe starije od 20 godina</b>.BMI prikazuje odnos mase i visine tela, međutim ne
+            uzima u obzir telesnu građu, pa je njegova upotreba ograničena.
+        </p>
+
+        <p>On ne može ilustrovati procenat masnog tkiva u odnosu na mišićnu ili koštanu masu – što su osnovni
+            kriterijumi za procenu uhranjenosti. Pojedinci sa velikom telesnom masom i visokim BMI indeksom ne mogu se
+            automatski kategorizovati kao gojazni. Na primer, kod bodibildera i krupno građenih ljudi, udeo mišićne i
+            koštane mase u odnosu na visinu je velik, ali to ne znači da su oni debeli.
+        </p>
+    </div>
+
+    <div id="kalkulator">
+
+        <div id="unos">
+            <label id="m" for="visina" style="font-family: 'Alegreya Sans', serif;">Visina u metrima:</label>
+            <input type="number" name="visina" id="visina" title="Unesite Vašu visinu." value="1.70" min="1" max="2.5" step="0.01"
+                   style="width: 70px;"/><br/>
+            <label id="kg" for="tezina" style="font-family: 'Alegreya Sans', serif;">Težina u kilogramima:</label>
+            <input type="number" name="tezina" id="tezina" title="Unesite Vašu težinu." value="60" min="30" max="300" style="width: 70px;" required/>
+            <br/>
+            <br/>
+            <input type="submit" value="Izračunaj BMI" class="izracunajBMI" onClick="BMIKalkulator()"/>
+        </div>
+
+
+        <br/>
+
+        <div id="bmi" style="font-family: 'Alegreya Sans', serif;">
+
+            <div id="rezultat"><font color="black">Vaš BMI je:</font>
+                <input type="text" id="bmiRez" name="bmi" disabled="disabled"><br/><br/>
+            </div>
+            <div id="slika">
+
+                <img src="slike/index.jpg" height="180" width="250">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
